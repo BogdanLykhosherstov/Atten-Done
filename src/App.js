@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import Main from './Components/Main.js';
 import Register from './Components/Register.js';
+import Selection from './Components/Selection.js';
 import './App.css';
 import './bootstrap/css/bootstrap.css';
 class App extends Component {
-
+//USE FOR NAVIGATION BETWEEN DIFFERENT PAGES
   constructor(){
       super();
       this.state = {
@@ -15,20 +16,23 @@ class App extends Component {
       };
   }
   changePage(e){
+      //MAIN page
       this.setState({page: 1});
   }
   backToLogin(e){
+      //Login page
       this.setState({page:0});
   }
-  registerPage(){
+  registerPage(e){
+      //Register page
       this.setState({page:2});
   }
   render() {
     const loginPage =
         <div className="App">
-       <h2 className="welcome-header">
+       <h1 className="welcome-header">
            Atten-Done
-       </h2>
+       </h1>
        <div className="container login-container">
            <form onSubmit={this.changePage.bind(this)}>
      <div class="form-group">
@@ -51,8 +55,9 @@ class App extends Component {
      else if(this.state.page === 1){
          toRender = <Main handler={this.backToLogin.bind(this)}/>;
      }
-     else{
-         toRender = <Register handler={this.backToLogin.bind(this)}/>;
+     else if(this.state.page == 2){
+         // toRender = <Register handler={this.backToLogin.bind(this)}/>;
+         toRender = <Selection handler={this.backToLogin.bind(this)}/>;
      }
     return (
         //if logged in return main page, otherwise, login page
