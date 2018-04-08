@@ -1,7 +1,9 @@
 .App {
   text-align: center;
 }
-
+h4{
+    color:white!important;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -10,7 +12,7 @@
     margin-top:5%;
 }
 .App-header {
-  background-color: #222;
+
   height: 150px;
   padding: 20px;
   color: white;
@@ -27,6 +29,49 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+.teacher-container{
+    display: flex;
+    flex-direction:row;
+    /* padding: 2%; */
+    height:700px;
+    /* Rectangle 2: */
+
+}
+.teacher-left{
+    flex-grow: 3;
+    margin:2% 1% 2%;
+    padding:4%;
+    background-color: #28373E;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+}
+.teacher-top-panel{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.teacher-addBtn{
+
+}
+.teacher-right{
+    flex-grow: 1;
+    margin: 2% 2% 2% 1%;
+    padding:4%;
+    border-radius: 12px;
+    height:auto;
+    display: flex;
+    flex-direction: column;
+
+}
+/* .teacher-right h4{
+    heigh:50px;
+} */
+.teacher-text-field{
+
+    flex-grow: 1;
+    background-color: white;
 }
 
 .selection-page-container{
