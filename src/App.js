@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import Teacher from './Components/Teacher.js';
 import Register from './Components/Register.js';
 import Selection from './Components/Selection.js';
+import Student from './Components/Student.js';
 import './App.css';
 import './bootstrap/css/bootstrap.css';
 class App extends Component {
@@ -53,7 +54,8 @@ class App extends Component {
          toRender = loginPage;
      }
      else if(this.state.page === 1){
-         toRender = <Teacher handler={this.backToLogin.bind(this)}/>;
+         // toRender = <Teacher handler={this.backToLogin.bind(this)}/>;
+         toRender = <Student handler={this.backToLogin.bind(this)}/>;
      }
      else if(this.state.page == 2){
          // toRender = <Register handler={this.backToLogin.bind(this)}/>;
