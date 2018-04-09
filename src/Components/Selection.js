@@ -21,6 +21,9 @@ class Selection extends Component {
   parentSelector(){
       this.setState({page:3});
   }
+  schoolSelector(){
+      this.setState({page:4});
+  }
   render() {
       const selectionPage =
           <div className="App">
@@ -31,6 +34,7 @@ class Selection extends Component {
              <button id="studentBtn" className="btn btn-danger select-btn" onClick={this.studentSelector.bind(this)}>Student</button>
              <button id="teacherBtn" className="btn btn-success select-btn" onClick={this.teacherSelector.bind(this)}>Teacher</button>
              <button id="parentBtn"  className="btn btn-info select-btn" onClick={this.parentSelector.bind(this)}>Parent</button>
+             <button id="schoolBtn"  className="btn btn-warning select-btn" onClick={this.schoolSelector.bind(this)}>School</button>
          </div>
      </div>
      var toRender;
@@ -118,6 +122,27 @@ class Selection extends Component {
          </div>
          </div>
      }
+     else if (this.state.page == 4) {
+            toRender =  <div className="App">
+            <h2 className="welcome-header">
+                School Registration
+            </h2>
+            <div className="container login-container">
+                <form>
+            <div class="form-group">
+              <input type="email" class="form-control" id="exampleInputName1" aria-describedby="emailHelp" placeholder="Name"></input>
+            </div>
+            <div class="form-group">
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
+            </div>
+            <div class="form-group">
+            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></input>
+            </div>
+            <button type="submit" class="btn btn-danger register-btn" onClick={this.props.handler}>Register</button>
+            </form>
+            </div>
+            </div>
+           }
       return(
           <div>{toRender}</div>
  );
