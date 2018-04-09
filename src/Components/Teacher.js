@@ -10,13 +10,24 @@ class Teacher extends Component {
   constructor(){
       super();
       this.state = {
-          page:0
+          page:0,
+          teacherTopPanelText: "Classroom",
+          classrooms: ['CPSC471', 'CPSC359', 'CPSC331', 'CPSC471', 'CPSC471',
+           'CPSC471', 'CPSC471', 'CPSC471', 'CPSC471', 'CPSC471', 'CPSC471',
+           'CPSC471', 'CPSC471', 'CPSC471', 'CPSC471', 'CPSC471', 'CPSC471',
+           'CPSC471', 'CPSC471', 'CPSC471', 'CPSC471', 'CPSC471', 'CPSC471',
+           'CPSC471', 'CPSC471', 'SOCI507', 'CPSC471', 'ENTI201', 'KINES301']
       };
+  }
+
+  onClassroomClick(index, el, classroom) {
+      console.log(index);
+      this.setState({ teacherTopPanelText: el });
   }
 
   render() {
     var handler1 = this.props.handler;
-
+    const classrooms = this.state.classrooms.map((classroom, index) => <li key={index} onClick={this.onClassroomClick.bind(this, index, classroom)}>{classroom}</li>);
     return (
 
       <div className="App">
@@ -45,7 +56,7 @@ class Teacher extends Component {
             {/* Left side = manage students panel */}
             <div className="teacher-left bg-dark">
                 {/* this will have title and add buttons */}
-                <div className="teacher-top-panel"><h4>Attendance Record: Classname</h4><div className="teacher-addBtn"><FontAwesome name="plus-circle" size='2x' style={{ color: '#6ff268'}}/></div></div>
+                <div className="teacher-top-panel"><h4>Attendance Record: {this.state.teacherTopPanelText}</h4><div className="teacher-addBtn"><FontAwesome name="plus-circle" size='2x' style={{ color: '#6ff268'}}/></div></div>
 
                 <div className="teacher-text-field">
 
@@ -55,7 +66,7 @@ class Teacher extends Component {
             <div className="teacher-right bg-dark">
                 <h4>View Classrooms</h4>
                 <div className="teacher-text-field">
-
+                    <ul className="teacher-classroom-list">{classrooms}</ul>
                 </div>
             </div>
 
