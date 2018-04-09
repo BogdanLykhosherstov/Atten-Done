@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import Main from './Components/Main.js';
+import Teacher from './Components/Teacher.js';
 import Register from './Components/Register.js';
 import Selection from './Components/Selection.js';
 import './App.css';
@@ -35,7 +35,7 @@ class App extends Component {
        </h1>
        <div className="container login-container">
            <form onSubmit={this.changePage.bind(this)}>
-     <div class="form-group">
+     <div className="form-group">
        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
      </div>
      <div class="form-group">
@@ -53,7 +53,7 @@ class App extends Component {
          toRender = loginPage;
      }
      else if(this.state.page === 1){
-         toRender = <Main handler={this.backToLogin.bind(this)}/>;
+         toRender = <Teacher handler={this.backToLogin.bind(this)}/>;
      }
      else if(this.state.page == 2){
          // toRender = <Register handler={this.backToLogin.bind(this)}/>;
