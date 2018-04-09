@@ -36,13 +36,13 @@ class App extends Component {
        <div className="container login-container">
            <form onSubmit={this.changePage.bind(this)}>
      <div className="form-group">
-       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
+       <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
      </div>
-     <div class="form-group">
-       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></input>
+     <div className="form-group">
+       <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"></input>
      </div>
-     <button type="submit" class="btn btn-success login-btn">Login</button>
-     <div class="form-group"> <button type="submit" class="btn btn-link " onClick={this.registerPage.bind(this)}>Not a member?</button></div>
+     <button type="submit" className="btn btn-success login-btn">Login</button>
+     <div className="form-group"> <button type="submit" className="btn btn-link " onClick={this.registerPage.bind(this)}>Not a member?</button></div>
 
        </form>
        </div>
