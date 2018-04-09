@@ -131,6 +131,21 @@ h4{
     overflow: scroll;
     flex-grow: 1;
     background-color: white;
+    overflow: scroll;
+}
+
+.teacher-classroom-list{
+    list-style: none;
+    text-align: left;
+    padding: 0;
+}
+
+.teacher-classroom-list li:hover{
+    color:blue;
+}
+
+.teacher-classroom-list li{
+  padding: 1%;
 }
 
 .selection-page-container{
