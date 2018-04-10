@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import logo from '../logo.svg';
 import '../App.css';
 import '../bootstrap/css/bootstrap.css';
+import {app, base} from '../base';
+
 
 class Selection extends Component {
 
   constructor(){
       super();
       this.state = {
-          page:0
+          page:0,
+          username: "",
+          password: ""
       };
   }
 
@@ -24,6 +28,16 @@ class Selection extends Component {
   schoolSelector(){
       this.setState({page:4});
   }
+
+  signUp() {
+    console.log('this.state', this.state);
+    const {username, password} = this.state;
+    app.auth().createUserWithEmailAndPassword(username, password)
+      .catch(error => {
+        console.log('error', error);
+      })
+  }
+
   render() {
       const selectionPage =
           <div className="App">
@@ -50,21 +64,21 @@ class Selection extends Component {
          <div className="container login-container">
              <form>
          <div class="form-group">
-           <input type="email" class="form-control" id="exampleInputName1" aria-describedby="emailHelp" placeholder="Name"></input>
+           <input type="text" name="Name" class="form-control" id="exampleInputName1" aria-describedby="emailHelp" placeholder="Name"></input>
          </div>
          <div class="form-group">
-           <input type="email" class="form-control" id="exampleInputUserName1" aria-describedby="emailHelp" placeholder="Username"></input>
+           <input type="text" name="username" class="form-control" id="exampleInputUserName1" aria-describedby="emailHelp" placeholder="Username"></input>
          </div>
          <div class="form-group">
-           <input type="email" class="form-control" id="exampleInputParentName" aria-describedby="emailHelp" placeholder="Parent Name"></input>
+           <input type="text" name="Age" class="form-control" id="exampleInputParentName" aria-describedby="emailHelp" placeholder="Age"></input>
          </div>
        <div class="form-group">
-         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
+         <input type="email" name="email" class="form-control" id="exampleInputEmail1" onChange={event => this.setState({username: event.target.value})} aria-describedby="emailHelp" placeholder="Enter email"></input>
        </div>
        <div class="form-group">
-         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></input>
+         <input type="password" name="password" class="form-control" id="exampleInputPassword1" onChange={event => this.setState({password: event.target.value})} placeholder="Password"></input>
        </div>
-      <button type="submit" class="btn btn-danger register-btn" onClick={this.props.handler}>Register</button>
+      <button type="submit" class="btn btn-danger register-btn" onClick={() => this.signUp()}>Register</button>
          </form>
          </div>
      </div>
@@ -84,12 +98,12 @@ class Selection extends Component {
            <input type="email" class="form-control" id="exampleInputUserName1" aria-describedby="emailHelp" placeholder="Username"></input>
          </div>
          <div class="form-group">
-         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
+         <input type="email" class="form-control" id="exampleInputEmail1" onChange={event => this.setState({username: event.target.value})} aria-describedby="emailHelp" placeholder="Enter email"></input>
          </div>
          <div class="form-group">
-         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></input>
+         <input type="password" class="form-control" id="exampleInputPassword1" onChange={event => this.setState({password: event.target.value})} placeholder="Password"></input>
          </div>
-         <button type="submit" class="btn btn-danger register-btn" onClick={this.props.handler}>Register</button>
+         <button type="submit" class="btn btn-danger register-btn" onClick={() => this.signUp()}>Register</button>
          </form>
          </div>
          </div>
@@ -112,12 +126,12 @@ class Selection extends Component {
            <input type="email" class="form-control" id="exampleInputUStudentID" aria-describedby="emailHelp" placeholder="Enter your student's ID"></input>
          </div>
          <div class="form-group">
-         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
+         <input type="email" class="form-control" id="exampleInputEmail1" onChange={event => this.setState({username: event.target.value})} aria-describedby="emailHelp" placeholder="Enter email"></input>
          </div>
          <div class="form-group">
-         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></input>
+         <input type="password" class="form-control" id="exampleInputPassword1" onChange={event => this.setState({password: event.target.value})} placeholder="Password"></input>
          </div>
-         <button type="submit" class="btn btn-danger register-btn" onClick={this.props.handler}>Register</button>
+         <button type="submit" class="btn btn-danger register-btn" onClick={() => this.signUp()}>Register</button>
          </form>
          </div>
          </div>
@@ -133,12 +147,12 @@ class Selection extends Component {
               <input type="email" class="form-control" id="exampleInputName1" aria-describedby="emailHelp" placeholder="Name"></input>
             </div>
             <div class="form-group">
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
+            <input type="email" class="form-control" id="exampleInputEmail1" onChange={event => this.setState({username: event.target.value})} aria-describedby="emailHelp" placeholder="Enter email"></input>
             </div>
             <div class="form-group">
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></input>
+            <input type="password" class="form-control" id="exampleInputPassword1" onChange={event => this.setState({password: event.target.value})} placeholder="Password"></input>
             </div>
-            <button type="submit" class="btn btn-danger register-btn" onClick={this.props.handler}>Register</button>
+            <button type="submit" class="btn btn-danger register-btn" onClick={() => this.signUp()}>Register</button>
             </form>
             </div>
             </div>

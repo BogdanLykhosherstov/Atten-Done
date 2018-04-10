@@ -3,21 +3,30 @@ import logo from './logo.svg';
 import Teacher from './Components/Teacher.js';
 import Register from './Components/Register.js';
 import Selection from './Components/Selection.js';
+import {app, base} from './base';
 import './App.css';
 import './bootstrap/css/bootstrap.css';
+
+
 class App extends Component {
 //USE FOR NAVIGATION BETWEEN DIFFERENT PAGES
   constructor(){
       super();
       this.state = {
           page:0,
-          user: "",
-          pass: ""
+          username: "",
+          password: "",
+          authenticated: false
       };
+
+      //this.handleChange = this.handleChange.bind(this);
+      //this.handleSubmit = this.handleSubmit.bind(this);
+      this.authWithEmailPassword = this.authWithEmailPassword.bind(this);
   }
   changePage(e){
       //MAIN page
       this.setState({page: 1});
+      alert("logged in with: " + this.state.username + "and password: " + this.state.password);
   }
   backToLogin(e){
       //Login page
@@ -27,6 +36,24 @@ class App extends Component {
       //Register page
       this.setState({page:2});
   }
+  authWithEmailPassword(event) {
+    event.preventDefault()
+
+    const email = this.emailInput.value
+    const password = this.passwordInput.value
+
+    app.auth().signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        if(user && user.email) {
+          this.loginForm.reset()
+          this.setState({page: 1})
+        }
+      })
+      .catch((error) => {
+        alert("error in submit")
+      })
+  }
+
   render() {
     const loginPage =
         <div className="App">
@@ -34,14 +61,14 @@ class App extends Component {
            Atten-Done
        </h1>
        <div className="container login-container">
-           <form onSubmit={this.changePage.bind(this)}>
+           <form onSubmit={(event) => { this.authWithEmailPassword(event) }} ref={(form) => { this.loginForm = form }}>
      <div className="form-group">
-       <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"></input>
+       <input type="email" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" ref={(input) => {this.emailInput = input}} placeholder="Enter email"></input>
      </div>
      <div class="form-group">
-       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"></input>
+       <input type="password" class="form-control" name="password" id="exampleInputPassword1" ref={(input) => {this.passwordInput = input}} placeholder="Password"></input>
      </div>
-     <button type="submit" class="btn btn-success login-btn">Login</button>
+     <button type="submit" class="btn btn-success login-btn" >Login</button>
      <div class="form-group"> <button type="submit" class="btn btn-link " onClick={this.registerPage.bind(this)}>Not a member?</button></div>
 
        </form>
@@ -61,6 +88,7 @@ class App extends Component {
      }
     return (
         //if logged in return main page, otherwise, login page
+
         <div>{toRender}</div>
     );
   }
